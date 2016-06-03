@@ -14,9 +14,9 @@
 
 
 <div style="width:80%; margin:0 auto;text-align:center; background:#553322">
-<img name="first" src="cube.png" width="25%"  onClick=end(1) border=2>
-<img name="second" src="apple.png" width="25%"  onClick=end(2) border=2>
-<img name="third" src="pepper.png" width="25%"  onClick=end(3) border=2><br>
+<img name="first" id="first" src="cube.png" width="25%"  onClick=end(1) border=2>
+<img name="second" id="second" src="apple.png" width="25%"  onClick=end(2) border=2>
+<img name="third" id="third" src="pepper.png" width="25%"  onClick=end(3) border=2><br>
 </div>
 
 
@@ -54,9 +54,16 @@ IMG3 = "pepper.png"
 
 image = new Array(IMG1,IMG2,IMG3)
 
-document.form.first.height = document.form.first.width;
-document.form.second.height = document.form.first.width;
-document.form.third.height = document.form.first.width;
+img1 = document.getElementById("first");
+img1.height = img1.width;
+img2 = document.getElementById("second");
+img2.height = img2.width;
+img3 = document.getElementById("third");
+img3.height = img3.width;
+
+//document.form.first.height = document.form.first.width;
+//document.form.second.height = document.form.first.width;
+//document.form.third.height = document.form.first.width;
 
 //ロード時のメッセージ
 msg = document.getElementById("msg");
