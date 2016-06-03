@@ -54,12 +54,13 @@ IMG3 = "pepper.png"
 
 image = new Array(IMG1,IMG2,IMG3)
 
+window.onload = function() {
 img1 = document.getElementById("first");
 img1.height = img1.width;
 img2 = document.getElementById("second");
 img2.height = img2.width;
 img3 = document.getElementById("third");
-img3.height = img3.width * 3;
+img3.height = img3.width;
 
 //document.form.first.height = document.form.first.width;
 //document.form.second.height = document.form.first.width;
@@ -68,7 +69,7 @@ img3.height = img3.width * 3;
 //ロード時のメッセージ
 msg = document.getElementById("msg");
 msg.innerHTML = "";
-
+}
 
 //得点の計算
 function keisan(){
