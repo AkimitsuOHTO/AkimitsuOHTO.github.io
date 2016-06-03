@@ -42,20 +42,20 @@
 			<option value="16">HSMixed</option>
 			<option value="17">Depth</option>
 		</select>
-		<button type="button" id="video_subscribe">SUBSCRIBE</button><br>
+		<button type="button" id="video_subscribe">SUBSCRIBE</button> 		<button type="button" class="capture_start">START</button><br>
 		<canvas class="pepper_image" id="pepper_image1" style="display:none;"></canvas><br>
 		<canvas class="pepper_image_disp" width="960px" height="720px"></canvas><br>
-		<button type="button" class="capture_start">START</button><br>
 		<p id="result">
 		</p>
 		
+		<input type="button" id="LookLeft" value="LookLeft" onClick="lookleft()" style="width:200px; font-size:40px;padding:20px;">　　
+		<input type="button" id="LookRight" value="LookRight" onClick="lookright()" style="width:200px; font-size:40px;padding:20px;">　　
+		<input type="button" id="LookUp" value="LookUp" onClick="lookup()" style="width:200px; font-size:40px;padding:20px;">　　
+		<input type="button" id="LookDown" value="LookDown" onClick="lookdown()" style="width:200px; font-size:40px;padding:20px;">　　
+
+		<input type="button" id="TurnLeft" value="TurnLeft" onClick="turnleft()" style="width:200px; font-size:40px;padding:20px;">　　
+		<input type="button" id="TurnRight" value="TurnRight" onClick="turnright()" style="width:200px; font-size:40px;padding:20px;">　　
 		
-		<input type="button" id="Hello" value="Hello" class="actions" style="width:200px; font-size:40px;padding:20px;">　　
-		<input type="button" id="SitDown" value="SitDown" class="actions" style="width:200px; font-size:40px;padding:20px;"><br><br>
-		<input type="button" id="StandUp" value="StandUp" class="actions" style="width:200px; font-size:40px;padding:20px;">　　
-		<input type="button" id="Walk" value="Walk" class="actions" style="width:200px; font-size:40px;padding:20px;"><br><br>
-		<input type="button" id="Squat" value="Squat" class="actions" style="width:200px; font-size:40px;padding:20px;">　　
-		<input type="button" id="Aisatsu" value="挨拶" class="actions" style="width:200px; font-size:40px;padding:20px;"><br><br>
 	</div>
 	<div id="display-wait"style="font-size:40px; display:none;">
 		休憩中だから少し待ってね！！
@@ -63,6 +63,29 @@
 <script>
 var pepper = {};
 
+function lookleft(){
+	pepper.altracker.lookAt([0,10,0],0,0.1,0);
+}
+
+function lookright(){
+	pepper.altracker.lookAt([0,-10,0],0,0.1,0);
+}
+
+function lookup(){
+	pepper.altracker.lookAt([10,0,5],0,0.1,0);
+}
+
+function lookdown(){
+	pepper.altracker.lookAt([10,0,-5],0,0.1,0);
+}
+
+function turnleft(){
+	pepper.almotion.moveTo(0,0, 3.14 * 30.0/180.0);
+}
+
+function turnright(){
+	pepper.almotion.moveTo(0,0, 3.14 * (-30.0)/180.0);
+}
 
 (function($){
 	
@@ -89,6 +112,16 @@ var pepper = {};
 		});
 	});
 
+	//顔のトラッキング
+	pepper.qi.service('ALTracker').done(function(als){
+		pepper.altracker = als;
+	});
+	
+	//動作
+	pepper.qi.service('ALMotion').done(function(als){
+		pepper.almotion = als;
+	});
+	
     // ビデオデバイス取得
     pepper.qi.service('ALVideoDevice').done(function(als){
         pepper.video = als;
@@ -135,8 +168,7 @@ var pepper = {};
         console.log('ALVideoDevice : NG', err);
     });
 
-
-
+	
     function unsubscribeCamera() {
 		if (pepper.video.id) {
 			pepper.video.unsubscribe(pepper.video.id);
