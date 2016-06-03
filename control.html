@@ -7,7 +7,7 @@
 </head>
 <body>
 
-	<div id="display-normal">
+	<div id="display-normal" >
 		<input id="pepper_ip" type="text" value="pepper.local">
 		<select id="camera_id">
 			<option value="0">TOP</option>
@@ -42,20 +42,42 @@
 			<option value="16">HSMixed</option>
 			<option value="17">Depth</option>
 		</select>
-		<button type="button" id="video_subscribe">SUBSCRIBE</button> 		<button type="button" class="capture_start">START</button><br>
+		<button type="button" id="video_subscribe">登録</button> 		
+		<button type="button" id="video_unsubscribe">解除</button> 		
+		<button type="button" class="capture_start">表示</button>
+	</div>
+	<div  style="float:left">
 		<canvas class="pepper_image" id="pepper_image1" style="display:none;"></canvas><br>
-		<canvas class="pepper_image_disp" width="960px" height="720px"></canvas><br>
-		<p id="result">
-		</p>
+		<canvas class="pepper_image_disp" width="960px" height="720px"></canvas>
 		
-		<input type="button" id="LookLeft" value="LookLeft" onClick="lookleft()" style="width:200px; font-size:40px;padding:20px;">　　
-		<input type="button" id="LookRight" value="LookRight" onClick="lookright()" style="width:200px; font-size:40px;padding:20px;">　　
-		<input type="button" id="LookUp" value="LookUp" onClick="lookup()" style="width:200px; font-size:40px;padding:20px;">　　
-		<input type="button" id="LookDown" value="LookDown" onClick="lookdown()" style="width:200px; font-size:40px;padding:20px;">　　
+	</div>
+	<div  style="float:left">
+		<table><tr><td></td>
+		<td>		
+		<input type="button" id="LookUp" value="↑" onClick="lookup()" style="width:50px; font-size:40px;padding:20px;">　　
+		</td>
+		<td></td></tr>
+		<tr>
+		<td>
+		<input type="button" id="LookLeft" value="←" onClick="lookleft()" style="width:50px; font-size:40px;padding:20px;">　　
+		</td>
+		<td>
+		<input type="button" id="LookCenter" value="●" onClick="lookcenter()" style="width:50px; font-size:40px;padding:20px;">　　
+		</td>
+		<td>
+		<input type="button" id="LookRight" value="→" onClick="lookright()" style="width:50px; font-size:40px;padding:20px;">　　
+		</td></tr>
+		<tr><td>
+		<input type="button" id="TurnLeft" value="<<" onClick="turnleft()" style="width:50px; font-size:40px;padding:20px;">　　
+		</td>
+		<td>
+		<input type="button" id="LookDown" value="↓" onClick="lookdown()" style="width:50px; font-size:40px;padding:20px;">　　
+		</td>
+		<td>
+		<input type="button" id="TurnRight" value=">>" onClick="turnright()" style="width:50px; font-size:40px;padding:20px;">　　
+		</td></tr>
+		</table>
 
-		<input type="button" id="TurnLeft" value="TurnLeft" onClick="turnleft()" style="width:200px; font-size:40px;padding:20px;">　　
-		<input type="button" id="TurnRight" value="TurnRight" onClick="turnright()" style="width:200px; font-size:40px;padding:20px;">　　
-		
 	</div>
 	<div id="display-wait"style="font-size:40px; display:none;">
 		休憩中だから少し待ってね！！
@@ -78,6 +100,11 @@ function lookup(){
 function lookdown(){
 	pepper.altracker.lookAt([10,0,-5],0,0.1,0);
 }
+
+function lookcenter(){
+	pepper.altracker.lookAt([10,0,0],0,0.1,0);
+}
+
 
 function turnleft(){
 	pepper.almotion.moveTo(0,0, 3.14 * 30.0/180.0);
@@ -131,6 +158,12 @@ function turnright(){
 			unsubscribeCamera();
 			subscribeCamera();
 		});
+
+		// カメラ登録解除
+		$('#video_unsubscribe').on('click', function(){
+			unsubscribeCamera();
+		});
+
 		// カメラ画像の取得
 		$('.capture_start').on('click.capture', function(){
 			var $cvs = $('.pepper_image');
@@ -181,7 +214,7 @@ function turnright(){
             +$('#camera_id').val(), // cameraId kTop kBottom kInfred(color:17)
             +$('#camera_reso').val(), // 320x240 8,7,0,1,2,3
             +$('#camera_colorspace').val(), // 0:monochrome, 9:YUV, 11:RGB http://doc.aldebaran.com/2-1/family/robots/video_robot.html#cameracolorspace-mt9m114
-            10 // framerate 1~30
+            2 // framerate 1~30
         ).done(function(res){
             console.log(res);
             pepper.video.id = res;
