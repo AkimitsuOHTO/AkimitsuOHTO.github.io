@@ -1,29 +1,36 @@
 <html lang="ja">
 <HEAD>
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
-<TITLE>Java Script暇つぶしスロットゲーム</TITLE>
+<TITLE>スロットゲーム</TITLE>
 
 </HEAD>
 <BODY>
 
 <center>
+<h1>
+スロットゲームです。スタートボタンを押してください。
+</h1>
 <form name="form">
+<div style="width:80%;margin:0 auto;text-align:center; background:#553322">
+<img name="first" src="cube.png" width="25%"  onClick=end(1) border=2>
+<img name="second" src="apple.png" width="25%"  onClick=end(2) border=2>
+<img name="third" src="pepper.png" width="25%"  onClick=end(3) border=2><br>
+</div>
 
-<img name="first" src="cube.png" width="100px">
-<img name="second" src="apple.png" width="100px">
-<img name="third" src="pepper.png" width="100px"><br>
-
+<!--
 <input type="button" value="stop" name="firstb" onClick=end(1)>　　　　　
 <input type="button" value="stop" name="secondb" onClick=end(2)>　　　　　
 <input type="button" value="stop" name="thirdb" onClick=end(3)>
+//-->
 
 <br><br>
 
-<input type="button" value="  START  " onClick=startGame()>
+<input type="button" value="  スタート  " onClick=startGame() style="width:500px;height:100px;font-size:200%;">
 
 <br><br><br>
 
-<input type="text" size=55 name="pay_back">
+<div name="msg" id="msg" ></div>
+
 </form>
 </center>
 
@@ -44,14 +51,26 @@ IMG3 = "pepper.png"
 
 image = new Array(IMG1,IMG2,IMG3)
 
+document.form.first.height = document.form.first.width;
+document.form.second.height = document.form.first.width;
+document.form.third.height = document.form.first.width;
+
+//ロード時のメッセージ
+msg = document.getElementById("msg");
+msg.innerHTML = "";
+
+
 //得点の計算
 function keisan(){
                 if((document.form.first.src == document.form.second.src) && (document.form.second.src == document.form.third.src)){
-                    document.form.pay_back.value="大当たり！";
+                    msg.innerHTML="大当たり!!!";
+                    msg.style="font-size:400%;color:#FF0033;"
                 } else if((document.form.first.src == document.form.second.src) || (document.form.second.src == document.form.third.src) || (document.form.third.src == document.form.first.src)){
-                    document.form.pay_back.value="おめでとう！";
+                    msg.innerHTML="おめでとう！";
+                    msg.style="font-size:300%;color:#CC0099;"
                 } else {
-                    document.form.pay_back.value="ざんねんでした！";
+                    msg.innerHTML="ざんねんでした！";
+                    msg.style="font-size:300%;color:#0000BB;"
                 }
              game = false
              box1 = true
@@ -88,13 +107,12 @@ tid = setTimeout("hyouji()",60)  //ここの数字を変えると、数字の変
 function startGame(){
    if(game == false){
             game = true
+            msg.innerHTML="タッチしたら絵柄が止まるよ";
+            msg.style="font-size:200%;color:#550033;"
             hyouji()
      }
 }
 
-
-//ロード時のメッセージ
-document.form.pay_back.value="STARTを押してね。"
 
 //-->
 </SCRIPT>
