@@ -5,9 +5,9 @@
 <hr>
 <form action="settext_nao.py" method="post">
 <table style="font-size:26px"><tr>
-<td>1.お部屋でロボット・IoT連携<br/><img id="img1" src="../room1.jpg" width=360px  onClick="say2(0);"></td>
-<td><br/><br/>2.外出中のコミュニケーション<br/><img id="img3" src="../room3.jpg" width=360px  onClick="say2(1);"></td>
-<td><br/><br/><br/><br/>3.ロボットを通した見守り<br/><img id="img2" src="../room2.jpg" width=360px  onClick="say2(2);"></td>
+<td >1.お部屋でロボット・IoT連携<br/><img id="img1" src="../room1.jpg"  border=1 width=360px  onClick="say2(0);"></td>
+<td >2.ロボットを通した見守り<br/><img id="img3" src="../room3.jpg" border=1 width=360px  onClick="say2(1);"></td>
+<td >3.外出中のコミュニケーション<br/><img id="img2" src="../room2.jpg" border=1 width=360px  onClick="say2(2);"></td>
 </tr></table>
 
 <div><img src="../nao_zoom.jpeg"><span style="font-size:30px; vertical-align:top;">説明をお聞きになりたい項目にタッチしてください。</span></div>
@@ -22,26 +22,19 @@
 <button class="button1" onclick="say3(); return false;">送信</button><br/><br/>
 <font size="7">1</font>
 <textarea cols="100" rows="5" id="sayText0" name="sayText0" >
-\VCT=135\\RSPD=110\
-あなたのお部屋に、僕を置いてくれたら、僕がイローォんな情報を教えてあげるよーーーーーっ。
-僕ってとってもすごいんだからっ！
-さあ、左のドアを開けてみてっ！アイオーティーとロボットの連携を体験してみてね。
+\VCT=135\\RSPD=110\あなたのお部屋に、僕を置いてくれたら、僕が役立つ情報を色々と教えてあげるよっ！僕ってとってもすごいんだからっ！さあ、左のドアを開けてみてっ！アイ・オー・Tとロボットの連携を体験してみてね。
 
 </textarea>
 <button class="button2" onclick="say2(0); return false;" >送信</button><br/>
 <font size="7">2</font>
 <textarea cols="100" rows="5" id="sayText1" name="sayText1" >
-\VCT=135\\RSPD=110\
-ロボットとお年寄りは、相性がとってもいいんだって絵っ。離れて暮らすあなたの家族を僕が大切に見守るよっっ！
-上のディスプレイに表示されている画面で、見守りの様子を体験してみてね。
+\VCT=135\\RSPD=110\ロボットとお年寄りは、相性がとってもいいんだって絵っ。離れて暮らすあなたの家族を僕が大切に見守るよっっ！上のディスプレイに表示されている画面で、見守りの様子を体験してみてね。
 
 </textarea>
 <button class="button2" onclick="say2(1); return false;" >送信</button><br/>
 <font size="7">3</font>
 <textarea cols="100" rows="5" id="sayText2" name="sayText2" >
-\VCT=135\\RSPD=110\
-急な外出や、仕事で帰りが遅くなって、お子さんが家で一人でお留守番。なんて、ちょっと心配だよね。
-そんな時は僕に任せて。右のドアを開けてみてっ！僕があなたのメッセージを代わりに伝えるよっ！！！
+\VCT=135\\RSPD=110\急な外出や、仕事で帰りが遅くなって、お子さんが家で一人でお留守番。なんて、ちょっと心配だよね。そんな時は僕に任せて。右のドアを開けてみてっ！僕があなたのメッセージを代わりに伝えるよっ！！！
 
 </textarea>
 <button class="button2" onclick="say2(2); return false;" >送信</button><br/>
