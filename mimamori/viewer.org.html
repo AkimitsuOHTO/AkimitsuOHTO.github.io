@@ -133,7 +133,7 @@ function say(){
 						}
 						avg += elapsed;
 						if (++count < maxcount) {
-							setTimeout(getPicture, 3000);
+							setTimeout(getPicture, 100);
 						} else {
 							var result = 'min:' + min + ',max:' + max + ',avg:' + avg/maxcount;
 							$('#result').html(result)
