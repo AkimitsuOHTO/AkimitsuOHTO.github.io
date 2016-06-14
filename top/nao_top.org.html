@@ -1,0 +1,57 @@
+
+<!DOCTYPE html><html lang="en"><head>  <meta charset="UTF-8">  <meta name="viewport" content="width=device-width,initial-scale=1.0">  <script src="/libs/qimessaging/1.0/qimessaging.js"></script>  <script src="/libs/qimessaging/1.0/jquery.min.js"></script>  <script src="/js/control_nao.js"></script>  <!-- StyleSheet -->  <link rel="stylesheet" media="(min-width: 640px)" href="/css/style_pc.css">  <link rel="stylesheet" media="(max-width: 640px)" href="/css/style_mobile.css">  <title>Pepper Scene</title></head><body><center><img src="../robolife_logo.gif" width=600></center><hr><form action="settext_nao.py" method="post"><table style="font-size:26px"><tr><td>1.お部屋でロボット・IoT連携<br/><img id="img1" src="../room1.jpg" width=360px  onClick="say2(0);"></td><td><br/><br/>2.外出中のコミュニケーション<br/><img id="img2" src="../room2.jpg" width=360px  onClick="say2(1);"></td><td><br/><br/><br/><br/>3.ロボットを通した見守り<br/><img id="img3" src="../room3.jpg" width=360px  onClick="say2(2);"></td></tr></table><div><img src="../nao_zoom.jpeg"><span style="font-size:30px; vertical-align:top;">説明をお聞きになりたい項目にタッチしてください。</span></div><div class="select"><select id="selectPage" name="selectPage">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+</select>
+</div>
+<button class="button1" onclick="say3(); return false;">送信</button><br/><br/>
+<font size="7">1</font>
+<textarea cols="100" rows="5" id="sayText0" name="sayText0" >\VCT=135\\RSPD=110\
+
+あなたのお部屋に、僕を置いてくれたら、僕がイローォんな情報を教えてあげるよーーーーーっ。
+
+お部屋の温度とかあ、ドアが開いたかどうかだとかあ、メールが届いたことだって！
+
+な・ん・で・も・任せてよっ！！
+
+
+
+
+
+
+
+
+
+
+
+
+</textarea>
+<button class="button2" onclick="say2(0); return false;" >送信</button><br/>
+<font size="7">2</font>
+<textarea cols="100" rows="5" id="sayText1" name="sayText1" >急な外出や、仕事で帰りが遅くなって、お子さんが家で一人でお留守番。なんて、ちょっと心配だよね。
+
+そんな時は僕に任せて。僕があなたのメッセージを代わりに伝えるよっ！！！
+
+
+
+
+
+
+
+
+
+
+</textarea>
+<button class="button2" onclick="say2(1); return false;" >送信</button><br/>
+<font size="7">3</font>
+<textarea cols="100" rows="5" id="sayText2" name="sayText2" >ロボットとお年寄りは、相性がとってもいいんだって絵っ。離れて暮らすあなたの家族を僕が大切に見守るよっっ！
+
+
+</textarea>
+<button class="button2" onclick="say2(2); return false;" >送信</button><br/>
+<font size="7">4</font>
+<textarea cols="100" rows="5" id="sayText3" name="sayText3" ></textarea>
+<button class="button2" onclick="say2(3); return false;" >送信</button><br/>
+<input type="submit" value="更新"></form></body></html>
