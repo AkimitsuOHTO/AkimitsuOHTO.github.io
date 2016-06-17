@@ -157,6 +157,9 @@ function turnright(){
     pepper.qi.service('ALVideoDevice').done(function(als){
         pepper.video = als;
         //subscribeCamera();
+		unsubscribeCamera(); //カメラ登録も一緒にする
+		subscribeCamera();   //カメラ登録も一緒にする
+
 		// カメラ登録
 		$('#video_subscribe').on('click', function(){
 			unsubscribeCamera();
@@ -170,8 +173,6 @@ function turnright(){
 
 		// カメラ画像の取得
 		$('.capture_start').on('click', function(){
-			unsubscribeCamera(); //カメラ登録も一緒にする
-			subscribeCamera();   //カメラ登録も一緒にする
 			var $cvs = $('.pepper_image');
 			var $cvs2 = $('.pepper_image_disp');
 			var count = 0, maxcount = 100000, min = 100000, max = 0, avg = 0;
