@@ -148,7 +148,7 @@ function end(variable){
                 clearTimeout(tid)
                 lastCount = 0
                 hyouji_last(variable)
-                keisan()
+
           }
 }
 
@@ -174,6 +174,7 @@ function hyouji_last(intIndex){
        tid = setTimeout("hyouji_last(" + String(intIndex) + ")",1000)  //ここの数字を変えると、数字の変わる速さが変わります。(機種やブラウザ、メモリ搭載量にも左右される)
        if(lastCount > 3){
           clearTimeout(tid)
+          keisan()
        }
 }
 
