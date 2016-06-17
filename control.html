@@ -7,7 +7,7 @@
 </head>
 <body>
 
-	<div id="display-normal" >
+	<div id="display-normal" style="display:none;">
 		<input id="pepper_ip" type="text" value="pepper.local">
 		<select id="camera_id">
 			<option value="0">TOP</option>
@@ -43,13 +43,17 @@
 			<option value="17">Depth</option>
 		</select>
 		<button type="button" id="video_subscribe">登録</button> 		
-		<button type="button" id="video_unsubscribe">解除</button> 		
-		<button type="button" class="capture_start">表示</button>
+		<button type="button" id="x_video_unsubscribe">解除</button> 		
+		<button type="button" class="x_capture_start">表示</button>
 	</div>
 	<div  style="float:left">
 		<canvas class="pepper_image" id="pepper_image1" style="display:none;"></canvas><br>
 		<canvas class="pepper_image_disp" width="960px" height="720px"></canvas>
 		
+	</div>
+	<div  style="float:left">
+		<input type="image" src="arrow/start.png" id="capture_start">
+		<input type="image" src="arrow/stop.png" id="video_unsubscribe">
 	</div>
 	<div  style="float:left">
 		<table><tr><td></td>
@@ -166,6 +170,8 @@ function turnright(){
 
 		// カメラ画像の取得
 		$('.capture_start').on('click.capture', function(){
+			unsubscribeCamera(); //カメラ登録も一緒にする
+			subscribeCamera();   //カメラ登録も一緒にする
 			var $cvs = $('.pepper_image');
 			var $cvs2 = $('.pepper_image_disp');
 			var count = 0, maxcount = 100000, min = 100000, max = 0, avg = 0;
@@ -185,7 +191,7 @@ function turnright(){
 						}
 						avg += elapsed;
 						if (++count < maxcount) {
-							setTimeout(getPicture, 100);
+							setTimeout(getPicture, 2000);
 						} else {
 							var result = 'min:' + min + ',max:' + max + ',avg:' + avg/maxcount;
 							$('#result').html(result)
