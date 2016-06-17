@@ -7,14 +7,14 @@
 </head>
 <body>
 
-	<div id="display-normal" style="display:none;">
-		<input id="pepper_ip" type="text" value="pepper.local">
-		<select id="camera_id">
+	<div id="display-normal" >
+		<input id="pepper_ip" type="text" value="pepper.local" style="display:none;">
+		<select id="camera_id" style="display:none;">
 			<option value="0">TOP</option>
 			<option value="1">BOTTOM</option>
 			<option value="2">IR</option>
 		</select>
-		<select id="camera_reso">
+		<select id="camera_reso" style="display:none;">
 			<option value="8">40x30</option>
 			<option value="7">80x60</option>
 			<option value="0">160x120</option>
@@ -22,7 +22,7 @@
 			<option value="2">640x480</option>
 			<option value="3">1280x960</option>
 		</select>
-		<select id="camera_colorspace">
+		<select id="camera_colorspace" style="display:none;">
 			<option value="0">Yuv</option>
 			<option value="1">yUv</option>
 			<option value="2">yuV</option>
@@ -42,9 +42,9 @@
 			<option value="16">HSMixed</option>
 			<option value="17">Depth</option>
 		</select>
-		<button type="button" id="video_subscribe">登録</button> 		
-		<button type="button" id="x_video_unsubscribe">解除</button> 		
-		<button type="button" class="x_capture_start">表示</button>
+		<button type="button" id="video_subscribe" style="display:none;">登録</button> 		
+		<button type="button" id="x_video_unsubscribe" style="display:none;">解除</button> 		
+		<button type="button" class="x_capture_start" style="display:none;">表示</button>
 	</div>
 	<div  style="float:left">
 		<canvas class="pepper_image" id="pepper_image1" style="display:none;"></canvas><br>
@@ -52,8 +52,8 @@
 		
 	</div>
 	<div  style="float:left">
-		<input type="image" src="arrow/start.png" id="capture_start">
-		<input type="image" src="arrow/stop.png" id="video_unsubscribe">
+		<input type="image" src="arrow/start.png" class="capture_start" width="150px">
+		<input type="image" src="arrow/stop.png" id="video_unsubscribe" width="150px">
 	</div>
 	<div  style="float:left">
 		<table><tr><td></td>
