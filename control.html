@@ -169,7 +169,7 @@ function turnright(){
 		});
 
 		// カメラ画像の取得
-		$('.capture_start').on('click.capture', function(){
+		$('.capture_start').on('click', function(){
 			unsubscribeCamera(); //カメラ登録も一緒にする
 			subscribeCamera();   //カメラ登録も一緒にする
 			var $cvs = $('.pepper_image');
