@@ -91,7 +91,6 @@ box1 = true
 box2 = true
 box3 = true
 num = Math.floor(Math.random() * 10)
-lastCount = 0
 
 IMG1 = "cube.png"
 IMG2 = "apple.png"
@@ -146,8 +145,6 @@ function end(variable){
           }
         if((box1 == false) && (box2 == false) && (box3 == false)){
                 clearTimeout(tid)
-                lastCount = 0
-                hyouji_last(variable)
                 keisan()
           }
 }
@@ -159,23 +156,10 @@ function hyouji(){
        if(box1)document.form.first.src = image[num % 3]
        if(box2)document.form.second.src = image[(num + 1) % 3]
        if(box3)document.form.third.src = image[(num + 2) % 3]
-       num += 1
-       tid = setTimeout("hyouji()",200)  //ここの数字を変えると、数字の変わる速さが変わります。(機種やブラウザ、メモリ搭載量にも左右される)
+num += 1
+tid = setTimeout("hyouji()",60)  //ここの数字を変えると、数字の変わる速さが変わります。(機種やブラウザ、メモリ搭載量にも左右される)
 }
 
-function hyouji_last(intIndex){
-       
-       if(num == 10) num = 0
-       if(intIndex == 1)document.form.first.src = image[num % 3]
-       if(intIndex == 2)document.form.second.src = image[(num + 1) % 3]
-       if(intIndex == 3)document.form.third.src = image[(num + 2) % 3]
-       num += 1
-       lastCount += 1
-       tid = setTimeout("hyouji_last(" + String(intIndex) + ")",1000)  //ここの数字を変えると、数字の変わる速さが変わります。(機種やブラウザ、メモリ搭載量にも左右される)
-       if(lastCount > 3){
-          clearTimeout(tid)
-       }
-}
 
 //ゲームの開始
 function startGame(){
