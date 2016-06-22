@@ -124,7 +124,7 @@ function keisan(){
                     msg.innerHTML="大当たり!!!";
 					sampleButtonClicked("GET1");
                 } else if((document.form.first.src == document.form.second.src) || (document.form.second.src == document.form.third.src) || (document.form.third.src == document.form.first.src)){
-                    msg.innerHTML="おめでとう！";
+                    msg.innerHTML="惜しい！！";
 					sampleButtonClicked("GET2");
                 } else {
                     msg.innerHTML="ざんねんでした！";
@@ -147,9 +147,13 @@ function end(variable){
         if((box1 == false) && (box2 == false) && (box3 == false)){
                 clearTimeout(tid)
                 lastCount = 0
+				sampleButtonClicked("STOP2");
                 hyouji_last(variable)
 
-          }
+        }　else {
+				sampleButtonClicked("STOP");
+
+		}
 }
 
 //数字を変換し、ボタンを押したら止める。
