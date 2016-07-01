@@ -7,8 +7,9 @@
 </head>
 <body>
 	<div id="display-normal" style="font-size:x-large;float:left" >
-		<h1>ロボット＆IoT 見守りサイト</h1>
-		ロボットが見ている画像です。
+		<!-- <h1>ロボット＆IoT 見守りサイト</h1> -->
+		<img src="mimamori_title.png" width="500px"><br>
+		ロボットが見ている画像です
 		<input id="pepper_ip" type="text" value="nao.local"  style="display:none;">
 		<select id="camera_id"  style="display:none;">
 			<option value="0">TOP</option>
@@ -43,8 +44,8 @@
 			<option value="16">HSMixed</option>
 			<option value="17">Depth</option>
 		</select>
-		<button type="button" id="video_subscribe">登録</button> 		
-		<button type="button" id="video_unsubscribe">解除</button> 		
+		<button type="button" id="video_subscribe" style="display:none;">登録</button> 		
+		<button type="button" id="video_unsubscribe">停止</button> 		
 		<button type="button" class="capture_start">表示</button>
 		<br/>
 		<canvas class="pepper_image" id="pepper_image1" style="display:none;"></canvas><br>
@@ -53,7 +54,7 @@
 			休憩中だから少し待ってね！！
 		</div>
 		<br/>
-		<textarea cols="60" rows="2" id="sayText" name="sayText"></textarea>
+		メッセージ<br><textarea cols="60" rows="2" id="sayText" name="sayText"></textarea>
 	    <button class="button"  style="width:100px; height:30px;" onclick="say()">送信</button>
 		<br/>  
 		
@@ -65,6 +66,7 @@
 <script>
 
 var pepper = {};
+var stopFLG = "";
 
 // おしゃべり
 function say(){
@@ -100,16 +102,17 @@ function say(){
     // ビデオデバイス取得
     pepper.qi.service('ALVideoDevice').done(function(als){
         pepper.video = als;
-        //subscribeCamera();
+		subscribeCamera();   //カメラ登録も一緒にする
 		// カメラ登録
 		$('#video_subscribe').on('click', function(){
-			unsubscribeCamera();
+			//unsubscribeCamera();
 			subscribeCamera();
 		});
 
 		// カメラ登録解除
 		$('#video_unsubscribe').on('click', function(){
-			unsubscribeCamera();
+			stopFLG = "1";
+			//unsubscribeCamera();
 		});
 
 		// カメラ画像の取得
@@ -118,6 +121,7 @@ function say(){
 			var $cvs2 = $('.pepper_image_disp');
 			var count = 0, maxcount = 100000, min = 100000, max = 0, avg = 0;
 
+			stopFLG = "";
 			function getPicture() {
 				var start = new Date();
 				pepper.video
@@ -132,7 +136,7 @@ function say(){
 							max = elapsed;
 						}
 						avg += elapsed;
-						if (++count < maxcount) {
+						if (++count < maxcount && stopFLG == "") {
 							setTimeout(getPicture, 3000);
 						} else {
 							var result = 'min:' + min + ',max:' + max + ',avg:' + avg/maxcount;
@@ -157,8 +161,10 @@ function say(){
     }
 	
     function subscribeCamera() {
+		var nowDT = new Date();
+		var nowTime = 'test_capture' + nowDT.getHours() + '_' + nowDT.getMinutes() + '_' + nowDT.getSeconds()
         pepper.video.subscribeCamera(
-            'test_capture',
+            nowTime,
             +$('#camera_id').val(), // cameraId kTop kBottom kInfred(color:17)
             +$('#camera_reso').val(), // 320x240 8,7,0,1,2,3
             +$('#camera_colorspace').val(), // 0:monochrome, 9:YUV, 11:RGB http://doc.aldebaran.com/2-1/family/robots/video_robot.html#cameracolorspace-mt9m114
