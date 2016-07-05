@@ -1,19 +1,28 @@
 
-<!DOCTYPE html><html lang="en"><head>  <meta charset="UTF-8">  <meta name="viewport" content="width=device-width,initial-scale=1.0">  <script src="/libs/qimessaging/1.0/qimessaging.js"></script>  <script src="/libs/qimessaging/1.0/jquery.min.js"></script>  <script src="/js/control_nao.js"></script>  <!-- StyleSheet -->  <link rel="stylesheet" media="(min-width: 640px)" href="/css/style_pc.css">  <link rel="stylesheet" media="(max-width: 640px)" href="/css/style_mobile.css">  <title>Pepper Scene</title></head>
+<!DOCTYPE html><html lang="en"><head>  <meta charset="UTF-8">  <meta name="viewport" content="width=device-width,initial-scale=1.0">  <script src="/libs/qimessaging/1.0/qimessaging.js"></script>  <script src="/libs/qimessaging/1.0/jquery.min.js"></script>  <script src="/js/control_nao.js"></script>  <!-- StyleSheet -->  <link rel="stylesheet" media="(min-width: 640px)" href="/css/style_pc.css">  <link rel="stylesheet" media="(max-width: 640px)" href="/css/style_mobile.css">  
+<style type="text/css">
+<!-- 
+body{
+  background: url(../top_back.jpg) center center / cover no-repeat fixed;
+  }
+ -->
+ </style>
 
-<body><center><img src="../robolife_logo.gif" width=600></center>
+<title>Pepper Scene</title></head>
+
+<body><center><img src="../home_title.gif" width=600></center>
 <hr>
 <form action="settext_nao.py" method="post">
 <br/><br/><br/>
 <table style="font-size:26px"><tr>
-<td ><img id="img1" src="../new_room1.png"  border=0 width=360px  onClick="say2(0);"></td>
-<td ><img id="img3" src="../new_room2.png" border=0 width=360px  onClick="say2(1);"></td>
-<td ><img id="img2" src="../new_room3.png" border=0 width=360px  onClick="say2(2);"></td>
+<td ><img id="img1" src="../pic_room1.png"  border=0 width=360px  onClick="say2(0);"></td>
+<td ><img id="img3" src="../pic_room2.png" border=0 width=360px  onClick="say2(1);"></td>
+<td ><img id="img2" src="../pic_room3.png" border=0 width=360px  onClick="say2(2);"></td>
 </tr></table>
 <br/>
-<table><tr>
+<table style="background-color: #FFFFFF"><tr>
 	<td><img src="../nao_zoom.jpeg"></td>
-	<td style="font-size:40px; vertical-align:top;" width="800px">説明をお聞きになりたい項目に<br/>タッチしてください。</td>
+	<td style="font-size:40px; vertical-align:top;" width="800px"><img src="../text_tuki1.png"><br/><img src="../text_tuki2.png"></td>
 </tr></table>
 
 <div class="select"><select id="selectPage" name="selectPage">
