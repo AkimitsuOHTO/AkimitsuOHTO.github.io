@@ -136,7 +136,8 @@ function say(){
 							max = elapsed;
 						}
 						avg += elapsed;
-						if (++count < maxcount && stopFLG == "") {
+						//if (++count < maxcount && stopFLG == "") {
+						if (stopFLG == "") {
 							setTimeout(getPicture, 3000);
 						} else {
 							var result = 'min:' + min + ',max:' + max + ',avg:' + avg/maxcount;
